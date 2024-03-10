@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <!-- Форма пошуку -->
+    <form id="search-form">
+      <input type="text" placeholder="Enter search query" required />
+      <button type="submit">Search</button>
+    </form>
+
+    <!-- Галерея зображень -->
+    <div class="gallery"></div>
+
+    <!-- Індикатор завантаження -->
+    <div class="loader"></div>
+
+    <script type="module" src="./main.js"></script>
+    <script type="module" src="./js/pixabay-api.js"></script>
+    <script type="module" src="./js/render-functions.js"></script>
+  </body>
+</html>
