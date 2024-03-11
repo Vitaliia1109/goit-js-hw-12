@@ -10,92 +10,105 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f5f5f5; /* light gray background */
+  background-color: #f5f5f5;
 }
 
 /* Form styles */
 #search-form {
-  margin: 20px auto; /* center the form horizontally */
-  text-align: center; /* align the text in the center */
+  margin: 20px auto;
+  text-align: center;
 }
 
 #search-form input[type='text'] {
-  padding: 10px; /* add some padding around the text input */
-  font-size: 16px; /* set font size to 16 pixels */
-  border: 1px solid #ccc; /* add a light gray border */
-  border-radius: 4px; /* round the corners */
-  width: 300px; /* set the width to 300 pixels */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 300px;
 }
 
 #search-form button[type='submit'] {
-  padding: 10px 20px; /* add padding to the button */
-  font-size: 16px; /* set font size to 16 pixels */
-  background-color: #4caf50; /* green background */
-  color: white; /* white text color */
-  border: none; /* remove border */
-  border-radius: 4px; /* round the corners */
-  cursor: pointer; /* show pointer cursor */
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 #search-form button[type='submit']:hover {
-  background-color: #45a049; /* dark green background on hover */
+  background-color: #45a049;
 }
 
 /* Gallery styles */
 .gallery {
-  display: flex; /* use flexbox layout */
-  flex-wrap: wrap; /* wrap elements to next line if necessary */
-  justify-content: center; /* center the items horizontally */
-  margin: 20px auto; /* center the gallery */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px auto;
 }
 
 .card {
-  margin: 10px; /* add margin around each card */
-  border: 1px solid #ddd; /* add a light gray border */
-  border-radius: 4px; /* round the corners */
-  overflow: hidden; /* hide overflowing content */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* add shadow effect */
-  transition: box-shadow 0.3s ease; /* smooth transition */
+  margin: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
 }
 
 .card:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* darker shadow on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .card img {
-  width: 100%; /* make the image fill the card */
-  height: auto; /* maintain aspect ratio */
+  width: 100%;
+  height: auto;
 }
 
 .details {
-  padding: 10px; /* add padding around the details */
+  padding: 10px;
 }
 
 .details span {
-  display: block; /* display each detail on a new line */
-  margin-bottom: 5px; /* add space between details */
+  display: block;
+  margin-bottom: 5px;
 }
 
 /* Loader styles */
 .loader {
-  display: none; /* hide the loader by default */
-  border: 16px solid #f3f3f3; /* light gray border */
-  border-top: 16px solid #3498db; /* blue border on top */
-  border-radius: 50%; /* circle shape */
-  width: 120px; /* set width to 120 pixels */
-  height: 120px; /* set height to 120 pixels */
-  animation: spin 2s linear infinite; /* apply animation */
-  position: fixed; /* position the loader */
-  top: 50%; /* center vertically */
-  left: 50%; /* center horizontally */
-  z-index: 9999; /* make sure it's on top */
+  display: none;
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #3498db;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 9999;
 }
 
 @keyframes spin {
   0% {
     transform: translate(-50%, -50%) rotate(0deg);
-  } /* start position */
+  }
   100% {
     transform: translate(-50%, -50%) rotate(360deg);
-  } /* end position */
+  }
+}
+
+#load-more-btn {
+  color: #fff;
+  background-color: #3498db;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
