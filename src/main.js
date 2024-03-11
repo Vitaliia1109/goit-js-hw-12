@@ -32,7 +32,12 @@ form.addEventListener('submit', async (event) => {
         } else {
             clearGallery();
             renderImages(images);
-            loadMoreBtn.style.display = 'block'; 
+            if (images.length < 15) {  
+                loadMoreBtn.style.display = 'none';  
+                showError("We're sorry, but you've reached the end of search results.");
+            } else {
+                loadMoreBtn.style.display = 'block'; 
+            }
         }
     } catch (error) {
         showError(error.message);
@@ -54,13 +59,14 @@ loadMoreBtn.addEventListener('click', async () => {
     try {
         page++; 
         const images = await searchImages(query, page);
+
+            renderImages(images);
+            scrollToNextPage();
         if (images.length < 15) {
             loadMoreBtn.style.display = 'none';
             showError("We're sorry, but you've reached the end of search results.");
-        } else {
-            renderImages(images);
-            scrollToNextPage();
         }
+        
     } catch (error) {
         showError(error.message);
     } finally {
