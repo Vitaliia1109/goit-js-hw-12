@@ -54,7 +54,7 @@ loadMoreBtn.addEventListener('click', async () => {
     try {
         page++; 
         const images = await searchImages(query, page);
-        if (images.length === 0) {
+        if (images.length < 15) {
             loadMoreBtn.style.display = 'none';
             showError("We're sorry, but you've reached the end of search results.");
         } else {
