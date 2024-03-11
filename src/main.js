@@ -7,6 +7,7 @@ import { showError, clearGallery, renderImages } from "./js/render-functions.js"
 
 const form = document.querySelector('#search-form');
 const loader = document.querySelector('.loader');
+const loadMoreBtn = document.querySelector('#load-more-btn'); 
 let page = 1;
 
 form.addEventListener('submit', async (event) => {
@@ -19,17 +20,46 @@ form.addEventListener('submit', async (event) => {
     }
 
     loader.style.display = 'block';
+    page = 1;
 
     try {
         const images = await searchImages(query, page);
         if (images.length === 0) {
             clearGallery();
             showError('Sorry, there are no images matching your search query. Please try again!');
+            loadMoreBtn.style.display = 'none'; 
+            return; 
         } else {
             clearGallery();
             renderImages(images);
-            page = 1;
-            loadMoreBtn.style.display = 'block';
+            loadMoreBtn.style.display = 'block'; 
+        }
+    } catch (error) {
+        showError(error.message);
+    } finally {
+        loader.style.display = 'none';
+    }
+});
+
+loadMoreBtn.addEventListener('click', async () => {
+    const query = form.querySelector('input').value.trim();
+    if (!query) {
+        clearGallery();
+        showError('Please enter a search query');
+        return;
+    }
+
+    loader.style.display = 'block';
+
+    try {
+        page++; 
+        const images = await searchImages(query, page);
+        if (images.length === 0) {
+            loadMoreBtn.style.display = 'none';
+            showError("We're sorry, but you've reached the end of search results.");
+        } else {
+            renderImages(images);
+            scrollToNextPage();
         }
     } catch (error) {
         showError(error.message);
@@ -54,37 +84,6 @@ async function searchImages(query, page) {
     }
 }
 
-// Load more button functionality
-const loadMoreBtn = document.querySelector('#load-more-btn');
-loadMoreBtn.addEventListener('click', async () => {
-    const query = form.querySelector('input').value.trim();
-    if (!query) {
-        clearGallery();
-        showError('Please enter a search query');
-        return;
-    }
-
-    loader.style.display = 'block';
-
-    try {
-        page++;
-        const images = await searchImages(query, page);
-        if (images.length === 0) {
-            loadMoreBtn.style.display = 'none';
-            showError("We're sorry, but you've reached the end of search results.");
-        } else {
-            // loadMoreBtn.style.display = 'none';
-            renderImages(images);
-            scrollToNextPage();
-        }
-    } catch (error) {
-        showError(error.message);
-    } finally {
-        loader.style.display = 'none';
-    }
-});
-
-// Scroll to next page after loading more images
 function scrollToNextPage() {
     const cardHeight = document.querySelector('.card').offsetHeight;
     window.scrollBy({
